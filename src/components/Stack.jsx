@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import SectionHeader from "./SectionHeader.jsx";
 import useSpotlight from "./useSpotlight.js";
-import Sigil, { houses } from "./Sigil.jsx";
+import Sigil, { HouseShield, houses } from "./Sigil.jsx";
 import TechIcon from "./TechIcon.jsx";
 import { useContent } from "../store/hooks.js";
 
@@ -43,7 +43,7 @@ export default function Stack() {
                 )}
                 {house && (
                   <p className="mb-5 flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: house.color }}>
-                    <Sigil house={group.house} className="size-6" />
+                    <HouseShield house={group.house} className="h-7 w-6" />
                     <span>{house.name}</span>
                   </p>
                 )}

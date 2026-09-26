@@ -101,6 +101,21 @@
     opacity: 1;
   }
 
+  /* Banners sway from their pole when hovered or focused. */
+  .banner-sway {
+    transform-origin: 50% 0;
+  }
+  .group:hover .banner-sway,
+  .group:focus-visible .banner-sway {
+    animation: sway 1.6s ease-in-out;
+  }
+  @keyframes sway {
+    20% { transform: rotate(3deg) skewX(1deg); }
+    45% { transform: rotate(-2.4deg) skewX(-1deg); }
+    70% { transform: rotate(1.2deg); }
+    100% { transform: rotate(0); }
+  }
+
   .marquee-mask {
     mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   }
@@ -124,7 +139,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .animate-spin-slow {
+  .animate-spin-slow,
+  .group:hover .banner-sway,
+  .group:focus-visible .banner-sway {
     animation: none;
   }
 }

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import SectionHeader from "./SectionHeader.jsx";
-import Sigil, { houses } from "./Sigil.jsx";
+import Sigil, { HouseShield, houses } from "./Sigil.jsx";
 import { gsap, useGSAP, MOTION_OK } from "../lib/gsap.js";
 import { useContent } from "../store/hooks.js";
 
@@ -65,7 +65,7 @@ export default function Principles() {
                 {item.tag}
                 {house && (
                   <span className="flex items-center gap-1.5 normal-case tracking-normal" style={{ color: house.color }}>
-                    <Sigil house={item.house} className="size-4" />
+                    <HouseShield house={item.house} className="h-5 w-4" />
                     {house.name}
                   </span>
                 )}

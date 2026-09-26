@@ -6,6 +6,7 @@ import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
 import Stack from "./components/Stack.jsx";
 import Principles from "./components/Principles.jsx";
+import GreatHouses from "./components/GreatHouses.jsx";
 import Forge from "./components/Forge.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
@@ -55,6 +56,7 @@ function Page() {
         <About />
         <Stack />
         <Principles />
+        <GreatHouses />
         <Forge />
         <Contact />
       </main>
