@@ -1,0 +1,166 @@
+{
+  "profile": {
+    "name": "Yassir",
+    "arabicName": "ياسر",
+    "fullName": "Yassir Essayh",
+    "role": "Full-stack developer — Laravel & React",
+    "email": "essayhyasser@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/yasser-essayh",
+    "github": "https://github.com/FanKiing",
+    "githubUser": "FanKiing"
+  },
+  "nav": [
+    {
+      "id": "about",
+      "label": "About"
+    },
+    {
+      "id": "stack",
+      "label": "Stack"
+    },
+    {
+      "id": "principles",
+      "label": "Principles"
+    },
+    {
+      "id": "contact",
+      "label": "Contact"
+    }
+  ],
+  "marquee": [
+    "Laravel",
+    "React",
+    "Livewire",
+    "Tailwind CSS",
+    "Redux Toolkit",
+    "GSAP",
+    "Reverb",
+    "Node.js",
+    "MySQL",
+    "MongoDB",
+    "PHP",
+    "Python"
+  ],
+  "about": {
+    "statement": "I build web apps the way Daemon rides into battle: fast, precise and with no apology for high standards. Laravel is my home, React is my second language, and the user's experience is the rule everything else answers to.",
+    "facts": [
+      {
+        "label": "The name",
+        "value": "Yassir, not Yasser",
+        "note": "The s is silent to the world, but loud in my commits."
+      },
+      {
+        "label": "The craft",
+        "value": "Full-stack web apps",
+        "note": "Clean back ends, fast interfaces, and the glue in between."
+      },
+      {
+        "label": "House words",
+        "value": "Structure or die",
+        "note": "Chaos is a ladder, but only for the disciplined."
+      }
+    ],
+    "interests": [
+      "Story-driven games",
+      "A Song of Ice and Fire",
+      "Dark fantasy & political intrigue"
+    ]
+  },
+  "stack": [
+    {
+      "title": "Core",
+      "note": "The languages and frameworks I reach for first.",
+      "size": "wide",
+      "skills": [
+        "PHP",
+        "Laravel",
+        "JavaScript",
+        "React",
+        "Redux Toolkit",
+        "Node.js",
+        "Python"
+      ]
+    },
+    {
+      "title": "Laravel ecosystem",
+      "note": "Real-time, reactive and observable.",
+      "size": "tall",
+      "skills": [
+        "Livewire",
+        "Reverb",
+        "Telescope",
+        "Blade",
+        "SweetAlert"
+      ]
+    },
+    {
+      "title": "Front end",
+      "note": "Where design meets motion.",
+      "skills": [
+        "Tailwind CSS",
+        "GSAP",
+        "HTML5",
+        "CSS3",
+        "jQuery"
+      ]
+    },
+    {
+      "title": "Data",
+      "note": "Relational and document stores.",
+      "skills": [
+        "MySQL",
+        "MongoDB"
+      ]
+    },
+    {
+      "title": "Tools & workflow",
+      "note": "Version control, APIs and the daily setup.",
+      "size": "half",
+      "skills": [
+        "Git",
+        "GitHub",
+        "GitLab",
+        "VS Code",
+        "Postman"
+      ]
+    },
+    {
+      "title": "Office",
+      "note": "Documents, sheets and decks when the job needs them.",
+      "size": "half",
+      "skills": [
+        "Word",
+        "Excel",
+        "PowerPoint"
+      ]
+    }
+  ],
+  "principles": [
+    {
+      "tag": "Review",
+      "title": "Brutal honesty, kindly delivered",
+      "text": "Code review is where software gets better. I say what I see, and I expect the same in return."
+    },
+    {
+      "tag": "Architecture",
+      "title": "No spaghetti logic",
+      "text": "Clear layers, clear names, one responsibility per piece. Structure first, speed follows."
+    },
+    {
+      "tag": "Team",
+      "title": "Loyal, never silent",
+      "text": "I back the team's decisions, and I challenge the bad ones before they reach production."
+    },
+    {
+      "tag": "Experience",
+      "title": "The user is the law",
+      "text": "A confused user is a lost kingdom. Performance and clarity are features, not extras."
+    }
+  ],
+  "bugs": [
+    "N+1 query in OrderController@index",
+    "Undefined array key \"user_id\" in CheckoutService",
+    "useEffect infinite loop in Dashboard.jsx",
+    "z-index: 99999 on a modal nobody remembers"
+  ]
+}

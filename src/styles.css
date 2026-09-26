@@ -1,0 +1,147 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* Design tokens. The palette is deliberately dark-only: warm ink, bone text,
+   one Targaryen crimson accent and ember orange reserved for glows. */
+@theme {
+  --color-ink: #0a0908;
+  --color-ink-2: #121010;
+  --color-ink-3: #1b1716;
+  --color-bone: #ece6dc;
+  --color-mute: #8f8780;
+  --color-crimson: #b4232a;
+  --color-ember: #f06a2c;
+  --color-gold: #c8a86a;
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-arabic: "Aref Ruqaa", "Amiri", "Noto Naskh Arabic", serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-spin-slow: spin 60s linear infinite;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    background: var(--color-ink);
+  }
+  body {
+    @apply bg-ink text-bone font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: var(--color-crimson);
+    color: var(--color-bone);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8;
+  }
+
+  /* Film grain over the whole page, so the flat blacks feel like a material. */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* The silent "s" in Yassir: dimmed and struck through in crimson. */
+  .silent {
+    position: relative;
+    display: inline-block;
+    color: color-mix(in oklab, var(--color-bone) 28%, transparent);
+  }
+  .silent::after {
+    content: "";
+    position: absolute;
+    left: -6%;
+    right: -6%;
+    top: 50%;
+    height: 0.06em;
+    background: var(--color-crimson);
+    transform: rotate(-10deg);
+  }
+
+  /* Cards light up under the pointer. --mx / --my are set from JS. */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(180 35 42 / 0.16), transparent 45%);
+  }
+  .spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+    background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgb(240 106 44 / 0.55), transparent 50%);
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  }
+  .spotlight:hover::before,
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+}
+
+/* Reading-progress bar driven purely by CSS scroll timelines. */
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    transform-origin: 0 50%;
+    animation: grow-x linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes grow-x {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-spin-slow {
+    animation: none;
+  }
+}
