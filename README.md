@@ -16,6 +16,13 @@ Live at **https://fankiing.github.io**
 
 All text lives in [`public/data/portfolio.json`](public/data/portfolio.json). The app fetches it at runtime, so content changes need no code changes.
 
+Each stack group and principle can carry a `house` key (`targaryen`, `lannister`, `stark`, `tyrell`, `greyjoy`, `baratheon`, `martell`, `arryn`) that shows that house's sigil and words. Skill names map to logos in [`src/lib/techIcons.js`](src/lib/techIcons.js); unknown names get a lettered badge.
+
+## Credits
+
+- House sigils: [game-icons.net](https://game-icons.net), CC BY 3.0
+- Technology logos: [Simple Icons](https://simpleicons.org), CC0
+
 ## Development
 
 ```bash

@@ -46,8 +46,8 @@
     "facts": [
       {
         "label": "The name",
-        "value": "Yassir, not Yasser",
-        "note": "The s is silent to the world, but loud in my commits."
+        "value": "Yassir, with a double s",
+        "note": "Not Yasir, not Yasser. Two s, one i, and every letter pulls its weight."
       },
       {
         "label": "The craft",
@@ -69,6 +69,7 @@
   "stack": [
     {
       "title": "Core",
+      "house": "targaryen",
       "note": "The languages and frameworks I reach for first.",
       "size": "wide",
       "skills": [
@@ -83,6 +84,7 @@
     },
     {
       "title": "Laravel ecosystem",
+      "house": "lannister",
       "note": "Real-time, reactive and observable.",
       "size": "tall",
       "skills": [
@@ -95,6 +97,7 @@
     },
     {
       "title": "Front end",
+      "house": "tyrell",
       "note": "Where design meets motion.",
       "skills": [
         "Tailwind CSS",
@@ -106,6 +109,7 @@
     },
     {
       "title": "Data",
+      "house": "stark",
       "note": "Relational and document stores.",
       "skills": [
         "MySQL",
@@ -114,6 +118,7 @@
     },
     {
       "title": "Tools & workflow",
+      "house": "greyjoy",
       "note": "Version control, APIs and the daily setup.",
       "size": "half",
       "skills": [
@@ -126,6 +131,7 @@
     },
     {
       "title": "Office",
+      "house": "baratheon",
       "note": "Documents, sheets and decks when the job needs them.",
       "size": "half",
       "skills": [
@@ -139,22 +145,26 @@
     {
       "tag": "Review",
       "title": "Brutal honesty, kindly delivered",
-      "text": "Code review is where software gets better. I say what I see, and I expect the same in return."
+      "text": "Code review is where software gets better. I say what I see, and I expect the same in return.",
+      "house": "arryn"
     },
     {
       "tag": "Architecture",
       "title": "No spaghetti logic",
-      "text": "Clear layers, clear names, one responsibility per piece. Structure first, speed follows."
+      "text": "Clear layers, clear names, one responsibility per piece. Structure first, speed follows.",
+      "house": "lannister"
     },
     {
       "tag": "Team",
       "title": "Loyal, never silent",
-      "text": "I back the team's decisions, and I challenge the bad ones before they reach production."
+      "text": "I back the team's decisions, and I challenge the bad ones before they reach production.",
+      "house": "stark"
     },
     {
       "tag": "Experience",
       "title": "The user is the law",
-      "text": "A confused user is a lost kingdom. Performance and clarity are features, not extras."
+      "text": "A confused user is a lost kingdom. Performance and clarity are features, not extras.",
+      "house": "martell"
     }
   ],
   "bugs": [

@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import SectionHeader from "./SectionHeader.jsx";
 import useSpotlight from "./useSpotlight.js";
+import Sigil, { houses } from "./Sigil.jsx";
+import TechIcon from "./TechIcon.jsx";
 import { useContent } from "../store/hooks.js";
 
 // Bento placement per card size on medium and large screens.
@@ -25,26 +27,43 @@ export default function Stack() {
         </SectionHeader>
 
         <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
-          {stack.map((group) => (
-            <article
-              key={group.title}
-              data-reveal
-              className={`spotlight flex flex-col rounded-2xl border border-bone/[0.08] bg-ink-2/80 p-6 md:p-7 ${layout[group.size ?? "default"]}`}
-            >
-              <h3 className="text-lg font-semibold tracking-tight">{group.title}</h3>
-              <p className="mt-1.5 text-sm text-mute">{group.note}</p>
-              <ul className="mt-6 flex flex-wrap gap-2 md:mt-auto md:pt-8">
-                {group.skills.map((skill) => (
-                  <li
-                    key={skill}
-                    className="rounded-full border border-bone/10 bg-ink/60 px-3 py-1.5 font-mono text-xs text-bone/85"
-                  >
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+          {stack.map((group) => {
+            const house = houses[group.house];
+            return (
+              <article
+                key={group.title}
+                data-reveal
+                className={`spotlight group relative flex flex-col overflow-hidden rounded-2xl border border-bone/[0.08] bg-ink-2/80 p-6 md:p-7 ${layout[group.size ?? "default"]}`}
+              >
+                {house && (
+                  <Sigil
+                    house={group.house}
+                    className="pointer-events-none absolute -top-6 -right-6 size-36 opacity-[0.06] transition-opacity duration-500 group-hover:opacity-[0.14]"
+                  />
+                )}
+                {house && (
+                  <p className="mb-5 flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: house.color }}>
+                    <Sigil house={group.house} className="size-6" />
+                    <span>{house.name}</span>
+                  </p>
+                )}
+                <h3 className="text-lg font-semibold tracking-tight">{group.title}</h3>
+                <p className="mt-1.5 text-sm text-mute">{group.note}</p>
+                {house && <p className="mt-1 font-display text-xs tracking-[0.12em] text-bone/40">“{house.words}”</p>}
+                <ul className="mt-6 flex flex-wrap gap-2 md:mt-auto md:pt-8">
+                  {group.skills.map((skill) => (
+                    <li
+                      key={skill}
+                      className="flex items-center gap-2 rounded-full border border-bone/10 bg-ink/60 py-1.5 pr-3 pl-2 font-mono text-xs text-bone/85"
+                    >
+                      <TechIcon name={skill} className="size-4" />
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
