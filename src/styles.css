@@ -101,9 +101,55 @@
     opacity: 1;
   }
 
+  /* Banners sway from their pole when hovered or focused. */
+  .banner-sway {
+    transform-origin: 50% 0;
+  }
+  .group:hover .banner-sway,
+  .group:focus-visible .banner-sway {
+    animation: sway 1.6s ease-in-out;
+  }
+  @keyframes sway {
+    20% { transform: rotate(3deg) skewX(1deg); }
+    45% { transform: rotate(-2.4deg) skewX(-1deg); }
+    70% { transform: rotate(1.2deg); }
+    100% { transform: rotate(0); }
+  }
+
   .marquee-mask {
     mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   }
+}
+
+/* The "dracarys" easter egg: a wall of fire rises, then burns out. */
+.dracarys-fire {
+  background:
+    radial-gradient(60% 45% at 20% 100%, rgb(240 106 44 / 0.95), transparent 70%),
+    radial-gradient(55% 50% at 55% 100%, rgb(255 170 60 / 0.9), transparent 70%),
+    radial-gradient(60% 45% at 85% 100%, rgb(180 35 42 / 0.95), transparent 70%),
+    linear-gradient(to top, rgb(180 35 42 / 0.9), rgb(240 106 44 / 0.5) 40%, transparent 75%);
+  filter: blur(8px);
+  animation: dracarys-rise 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes dracarys-rise {
+  0% { transform: translateY(100%); opacity: 0; }
+  25% { opacity: 1; }
+  45% { transform: translateY(0) scaleY(1.05); }
+  60% { transform: translateY(2%) scaleY(0.97); }
+  100% { transform: translateY(0); opacity: 0; }
+}
+.dracarys-word {
+  text-shadow: 0 0 24px var(--color-ember), 0 0 60px var(--color-crimson);
+  animation: dracarys-word 2.6s ease-out forwards;
+}
+@keyframes dracarys-word {
+  0%, 15% { opacity: 0; transform: scale(0.9); }
+  35% { opacity: 1; transform: scale(1); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dracarys-word { animation: none; }
 }
 
 /* Reading-progress bar driven purely by CSS scroll timelines. */
@@ -124,7 +170,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .animate-spin-slow {
+  .animate-spin-slow,
+  .group:hover .banner-sway,
+  .group:focus-visible .banner-sway {
     animation: none;
   }
 }
