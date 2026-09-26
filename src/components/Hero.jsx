@@ -61,7 +61,7 @@ export default function Hero() {
           </p>
 
           <h1 className="hero-name invisible mt-6 font-display text-[clamp(4.25rem,17vw,12.5rem)] font-bold leading-[0.9] tracking-[-0.01em]">
-            Ya<span className="silent">s</span>sir
+            {profile.name}
           </h1>
 
           <p className="hero-fade mt-8 max-w-xl text-lg leading-relaxed text-bone/80 md:text-xl">
@@ -69,7 +69,7 @@ export default function Hero() {
             easy to maintain.
           </p>
           <p className="hero-fade mt-3 text-sm text-mute">
-            Not Yasser. The <em className="not-italic text-bone">s</em> is silent, but loud in my commits.
+            It's <em className="not-italic text-bone">Yassir</em>, with a double s. Not Yasir, not Yasser.
           </p>
 
           <div className="hero-fade mt-10 flex flex-wrap items-center gap-4">
