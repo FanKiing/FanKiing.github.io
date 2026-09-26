@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { sigilPaths } from "../lib/sigilPaths.js";
+import { sigilLayers } from "../lib/sigilPaths.js";
 import { useContent } from "../store/hooks.js";
 
 // Optional artwork per house from portfolio.json, e.g.
@@ -88,16 +88,32 @@ export const houses = {
   },
 };
 
+// The charge's layers. `outline` strokes each one in the field colour, so
+// overlapping pieces (the stag's crown over its antlers) stay distinct.
+function Charge({ house, fill, outline }) {
+  return (
+    <g fill={fill}>
+      {sigilLayers[house].map((l, i) => (
+        <path
+          key={i}
+          d={l.d}
+          transform={l.transform}
+          {...(outline && { stroke: outline, strokeWidth: 36, paintOrder: "stroke" })}
+        />
+      ))}
+    </g>
+  );
+}
+
 const a11yProps = (title) => (title ? { role: "img", "aria-label": title } : { "aria-hidden": true });
 
 // The bare charge in one colour. Decorative unless a `title` is given, since
 // the house name is usually printed next to it.
 export default function Sigil({ house, className = "size-10", title }) {
-  const path = sigilPaths[house];
-  if (!path) return null;
+  if (!sigilLayers[house]) return null;
   return (
-    <svg viewBox="0 0 512 512" className={`shrink-0 ${className}`} fill="currentColor" {...a11yProps(title)}>
-      <path d={path} />
+    <svg viewBox="0 0 512 512" className={`shrink-0 ${className}`} {...a11yProps(title)}>
+      <Charge house={house} fill="currentColor" />
     </svg>
   );
 }
@@ -135,8 +151,8 @@ export function HouseShield({ house, className = "size-10", title }) {
       </defs>
       <path d={SHIELD} fill={h.field} />
       <g clipPath={`url(#${id}c)`}>
-        <svg x="14" y="14" width="72" height="72" viewBox="0 0 512 512" fill={h.charge}>
-          <path d={sigilPaths[house]} />
+        <svg x="14" y="14" width="72" height="72" viewBox="0 0 512 512">
+          <Charge house={house} fill={h.charge} outline={h.field} />
         </svg>
         <path d={SHIELD} fill={`url(#${id}g)`} />
       </g>
@@ -167,8 +183,8 @@ export function HouseBanner({ house, className = "", title }) {
       {image ? (
         <image href={image} x="14" y="22" width="72" height="80" preserveAspectRatio="xMidYMid meet" />
       ) : (
-        <svg x="18" y="30" width="64" height="64" viewBox="0 0 512 512" fill={h.charge}>
-          <path d={sigilPaths[house]} />
+        <svg x="18" y="30" width="64" height="64" viewBox="0 0 512 512">
+          <Charge house={house} fill={h.charge} outline={h.field} />
         </svg>
       )}
       <path d={BANNER} fill={`url(#${id}g)`} />
