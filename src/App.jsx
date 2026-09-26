@@ -10,6 +10,8 @@ import GreatHouses from "./components/GreatHouses.jsx";
 import Forge from "./components/Forge.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
+import Allegiance from "./components/Allegiance.jsx";
+import DracarysEgg from "./components/DracarysEgg.jsx";
 import Loader from "./components/Loader.jsx";
 import { fetchPortfolio, selectContentError, selectContentStatus } from "./store/contentSlice.js";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK, prefersReducedMotion } from "./lib/gsap.js";
@@ -61,6 +63,8 @@ function Page() {
         <Contact />
       </main>
       <Footer />
+      <Allegiance />
+      <DracarysEgg />
     </>
   );
 }

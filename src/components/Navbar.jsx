@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { HouseShield, houses } from "./Sigil.jsx";
+import { selectAllegiance } from "../store/allegianceSlice.js";
 import { useContent } from "../store/hooks.js";
 
 export default function Navbar() {
   const { nav, profile } = useContent();
+  const allegiance = useSelector(selectAllegiance);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -25,6 +29,9 @@ export default function Navbar() {
           <span className="hidden font-arabic text-lg leading-none text-crimson sm:inline" lang="ar">
             {profile.arabicName}
           </span>
+          {houses[allegiance] && (
+            <HouseShield house={allegiance} className="h-6 w-5" title={`Sworn to ${houses[allegiance].name}`} />
+          )}
         </a>
         <nav aria-label="Sections" className="flex items-center gap-1">
           {nav.slice(0, -1).map((item) => (

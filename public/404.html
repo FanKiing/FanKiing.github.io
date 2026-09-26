@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 — You know nothing</title>
+    <meta name="theme-color" content="#0a0908" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Geist:wght@400;500&display=swap" />
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 24px 16px;
+        background: radial-gradient(90% 60% at 50% 115%, rgb(180 35 42 / 0.35), transparent 60%), #0a0908;
+        color: #ece6dc;
+        font-family: Geist, system-ui, sans-serif;
+        text-align: center;
+      }
+      .code {
+        font-family: Cinzel, Georgia, serif;
+        font-size: clamp(5rem, 24vw, 11rem);
+        line-height: 1;
+        margin: 0;
+        color: #b4232a;
+        text-shadow: 0 0 40px rgb(240 106 44 / 0.35);
+      }
+      h1 { font-family: Cinzel, Georgia, serif; font-size: clamp(1.5rem, 5vw, 2.4rem); margin: 12px 0 0; letter-spacing: 0.04em; }
+      p { color: #8f8780; max-width: 32rem; margin: 16px auto 0; line-height: 1.6; }
+      a {
+        display: inline-block;
+        margin-top: 32px;
+        padding: 14px 26px;
+        border-radius: 999px;
+        background: #b4232a;
+        color: #ece6dc;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      a:hover { background: #f06a2c; color: #0a0908; }
+      a:focus-visible { outline: 2px solid #f06a2c; outline-offset: 3px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code" aria-hidden="true">404</p>
+      <h1>You know nothing</h1>
+      <p>This road leads nowhere. Even the Night's Watch never patrolled this far north of the Wall.</p>
+      <a href="/">Return to the Red Keep</a>
+    </main>
+  </body>
+</html>

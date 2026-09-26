@@ -12,7 +12,8 @@ function useSigilImage(house) {
 
 // The great houses of Westeros. `field` and `charge` follow each house's blazon
 // in the books (e.g. Stark: a grey direwolf on an ice-white field); `color` is
-// a tint of the house that reads on the ink background.
+// a tint of the house that reads on the ink background, and `accent` replaces
+// the site's crimson when a visitor pledges to the house (dark enough for bone text).
 export const houses = {
   targaryen: {
     name: "House Targaryen",
@@ -20,6 +21,7 @@ export const houses = {
     seat: "Dragonstone",
     blazon: "A red three-headed dragon on black",
     color: "#b4232a",
+    accent: "#b4232a",
     field: "#0e0c0c",
     charge: "#b4232a",
   },
@@ -29,6 +31,7 @@ export const houses = {
     seat: "Winterfell",
     blazon: "A grey direwolf on an ice-white field",
     color: "#a9b8c6",
+    accent: "#4f6072",
     field: "#e6eaee",
     charge: "#5f6b76",
   },
@@ -38,6 +41,7 @@ export const houses = {
     seat: "Casterly Rock",
     blazon: "A golden lion rampant on crimson",
     color: "#c8a86a",
+    accent: "#8f1d22",
     field: "#8a1c1f",
     charge: "#e0b44a",
   },
@@ -47,6 +51,7 @@ export const houses = {
     seat: "Storm's End",
     blazon: "A crowned black stag on gold",
     color: "#e3b23c",
+    accent: "#8a6414",
     field: "#e3b23c",
     charge: "#141111",
   },
@@ -56,6 +61,7 @@ export const houses = {
     seat: "Highgarden",
     blazon: "A golden rose on a grass-green field",
     color: "#8fb573",
+    accent: "#3d6a34",
     field: "#3d6a34",
     charge: "#e8c75a",
   },
@@ -65,6 +71,7 @@ export const houses = {
     seat: "Pyke",
     blazon: "A golden kraken on black",
     color: "#d4b54a",
+    accent: "#6b5a17",
     field: "#101214",
     charge: "#d4b54a",
   },
@@ -74,6 +81,7 @@ export const houses = {
     seat: "Sunspear",
     blazon: "A red sun pierced by a golden spear, on orange",
     color: "#f06a2c",
+    accent: "#b2421a",
     field: "#e27a2e",
     charge: "#a3201c",
   },
@@ -83,6 +91,7 @@ export const houses = {
     seat: "The Eyrie",
     blazon: "A white moon-and-falcon on sky blue",
     color: "#7fa7d9",
+    accent: "#2f5f9e",
     field: "#5f8fcb",
     charge: "#f4f2ec",
   },
