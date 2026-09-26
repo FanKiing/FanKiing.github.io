@@ -1,5 +1,14 @@
 import { useId } from "react";
 import { sigilPaths } from "../lib/sigilPaths.js";
+import { useContent } from "../store/hooks.js";
+
+// Optional artwork per house from portfolio.json, e.g.
+// "sigilImages": { "stark": "sigils/stark.png" } with the file in public/sigils/.
+// Houses without an entry keep the drawn charge.
+function useSigilImage(house) {
+  const path = useContent()?.sigilImages?.[house];
+  return path ? `${import.meta.env.BASE_URL}${path}` : null;
+}
 
 // The great houses of Westeros. `field` and `charge` follow each house's blazon
 // in the books (e.g. Stark: a grey direwolf on an ice-white field); `color` is
@@ -98,8 +107,20 @@ const SHIELD = "M6 6H94V52C94 84 66 104 50 114C34 104 6 84 6 52Z";
 
 export function HouseShield({ house, className = "size-10", title }) {
   const id = useId();
+  const image = useSigilImage(house);
   const h = houses[house];
   if (!h) return null;
+  if (image) {
+    return (
+      <img
+        src={image}
+        alt={title ?? ""}
+        aria-hidden={title ? undefined : true}
+        loading="lazy"
+        className={`shrink-0 object-contain ${className}`}
+      />
+    );
+  }
   return (
     <svg viewBox="0 0 100 120" className={`shrink-0 ${className}`} {...a11yProps(title)}>
       <defs>
@@ -129,6 +150,7 @@ const BANNER = "M10 8H90V132L50 114L10 132Z";
 
 export function HouseBanner({ house, className = "", title }) {
   const id = useId();
+  const image = useSigilImage(house);
   const h = houses[house];
   if (!h) return null;
   return (
@@ -142,9 +164,13 @@ export function HouseBanner({ house, className = "", title }) {
         </linearGradient>
       </defs>
       <path d={BANNER} fill={h.field} />
-      <svg x="18" y="30" width="64" height="64" viewBox="0 0 512 512" fill={h.charge}>
-        <path d={sigilPaths[house]} />
-      </svg>
+      {image ? (
+        <image href={image} x="14" y="22" width="72" height="80" preserveAspectRatio="xMidYMid meet" />
+      ) : (
+        <svg x="18" y="30" width="64" height="64" viewBox="0 0 512 512" fill={h.charge}>
+          <path d={sigilPaths[house]} />
+        </svg>
+      )}
       <path d={BANNER} fill={`url(#${id}g)`} />
       <path d={BANNER} fill="none" stroke="#c8a86a" strokeOpacity="0.7" strokeWidth="1.5" />
       <rect x="2" y="3" width="96" height="6" rx="3" fill="#c8a86a" />

@@ -176,5 +176,6 @@
     "Undefined array key \"user_id\" in CheckoutService",
     "useEffect infinite loop in Dashboard.jsx",
     "z-index: 99999 on a modal nobody remembers"
-  ]
+  ],
+  "sigilImages": {}
 }

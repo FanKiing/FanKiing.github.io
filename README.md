@@ -18,6 +18,16 @@ All text lives in [`public/data/portfolio.json`](public/data/portfolio.json). Th
 
 Each stack group and principle can carry a `house` key (`targaryen`, `lannister`, `stark`, `tyrell`, `greyjoy`, `baratheon`, `martell`, `arryn`) that shows that house's sigil and words. Skill names map to logos in [`src/lib/techIcons.js`](src/lib/techIcons.js); unknown names get a lettered badge.
 
+### Using your own sigil artwork
+
+Put the image in `public/sigils/` and map the house to it in `portfolio.json`:
+
+```json
+"sigilImages": { "stark": "sigils/stark.png", "lannister": "sigils/lannister.png" }
+```
+
+The image then replaces the drawn charge on that house's shields and banners. PNG or SVG with a transparent background looks best. Only use artwork whose licence allows it, and credit the artist.
+
 ## Credits
 
 - House sigils: [game-icons.net](https://game-icons.net), CC BY 3.0
