@@ -85,6 +85,16 @@ export const houses = {
     field: "#e27a2e",
     charge: "#a3201c",
   },
+  tully: {
+    name: "House Tully",
+    words: "Family, Duty, Honor",
+    seat: "Riverrun",
+    blazon: "A leaping silver trout on a red-and-blue wavy field",
+    color: "#9fbad8",
+    accent: "#315f8b",
+    field: "#a32935",
+    charge: "#e6eaee",
+  },
   arryn: {
     name: "House Arryn",
     words: "As High as Honor",
@@ -99,15 +109,17 @@ export const houses = {
 
 // The charge's layers. `outline` strokes each one in the field colour, so
 // overlapping pieces (the stag's crown over its antlers) stay distinct.
-function Charge({ house, fill, outline }) {
+function Charge({ house, fill, outline, monochrome = false }) {
   return (
     <g fill={fill}>
       {sigilLayers[house].map((l, i) => (
         <path
           key={i}
           d={l.d}
+          fill={monochrome ? fill : l.fill ?? fill}
+          fillRule={l.fillRule}
           transform={l.transform}
-          {...(outline && { stroke: outline, strokeWidth: 36, paintOrder: "stroke" })}
+          {...(outline && { stroke: outline, strokeWidth: l.outlineWidth ?? 36, paintOrder: "stroke" })}
         />
       ))}
     </g>
@@ -122,8 +134,28 @@ export default function Sigil({ house, className = "size-10", title }) {
   if (!sigilLayers[house]) return null;
   return (
     <svg viewBox="0 0 512 512" className={`shrink-0 ${className}`} {...a11yProps(title)}>
-      <Charge house={house} fill="currentColor" />
+      <Charge house={house} fill="currentColor" monochrome />
     </svg>
+  );
+}
+
+// Tully's field is divided per fess wavy, red above blue.
+function HouseField({ house, shape }) {
+  const id = useId();
+  return (
+    <>
+      <path d={shape} fill={houses[house].field} />
+      {house === "tully" && (
+        <>
+          <defs><clipPath id={`${id}field`}><path d={shape} /></clipPath></defs>
+          <path
+            d="M0 64Q12.5 54 25 64T50 64T75 64T100 64V150H0Z"
+            fill="#315f8b"
+            clipPath={`url(#${id}field)`}
+          />
+        </>
+      )}
+    </>
   );
 }
 
@@ -158,7 +190,7 @@ export function HouseShield({ house, className = "size-10", title }) {
           <stop offset="1" stopColor="#000" stopOpacity="0.3" />
         </linearGradient>
       </defs>
-      <path d={SHIELD} fill={h.field} />
+      <HouseField house={house} shape={SHIELD} />
       <g clipPath={`url(#${id}c)`}>
         <svg x="14" y="14" width="72" height="72" viewBox="0 0 512 512">
           <Charge house={house} fill={h.charge} outline={h.field} />
@@ -188,7 +220,7 @@ export function HouseBanner({ house, className = "", title }) {
           <stop offset="1" stopColor="#000" stopOpacity="0.3" />
         </linearGradient>
       </defs>
-      <path d={BANNER} fill={h.field} />
+      <HouseField house={house} shape={BANNER} />
       {image ? (
         <image href={image} x="14" y="22" width="72" height="80" preserveAspectRatio="xMidYMid meet" />
       ) : (

@@ -10,7 +10,7 @@ export default function Footer() {
         <p className="italic">Winter is coming. The deploy is already live.</p>
       </div>
       <p className="wrap mt-6 text-center text-xs text-mute/70 md:text-left">
-        House sigils from{" "}
+        House sigils: original artwork and adaptations from{" "}
         <a href="https://game-icons.net" target="_blank" rel="noopener noreferrer" className="underline hover:text-bone">
           game-icons.net
         </a>{" "}

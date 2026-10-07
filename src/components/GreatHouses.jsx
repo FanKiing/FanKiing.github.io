@@ -4,7 +4,7 @@ import { HouseBanner, houses } from "./Sigil.jsx";
 import { pledged, selectAllegiance } from "../store/allegianceSlice.js";
 import { useContent } from "../store/hooks.js";
 
-// The eight great houses as hanging banners. Each banner lists the stack
+// The houses as hanging banners. Each banner lists the stack
 // groups and principles sworn to it in portfolio.json, and clicking one
 // pledges the visitor to that house.
 export default function GreatHouses() {
@@ -21,11 +21,11 @@ export default function GreatHouses() {
     <section id="houses" className="relative border-t border-bone/[0.06] py-28 md:py-40">
       <div className="wrap">
         <SectionHeader label="The Great Houses" title="Every part of the stack swears to a house">
-          Each banner carries the house's arms as the books blazon them. Pick one to pledge your
+          Each banner carries a stylised rendering of the house's heraldic arms. Pick one to pledge your
           allegiance, and the whole site takes its colours.
         </SectionHeader>
 
-        <ul className="mt-16 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4 lg:grid-cols-8">
+        <ul className="mt-16 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4 lg:grid-cols-5">
           {Object.entries(houses).map(([key, h]) => {
             const vassals = sworn(key);
             const pledgedHere = allegiance === key;
